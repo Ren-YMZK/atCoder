@@ -1,3 +1,6 @@
 N, M = map(int, input().split())
 
-print(N)
+if M <= (N + 1) // 2:
+  print("Yes")
+else:
+  print("No")
