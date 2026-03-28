@@ -1,17 +1,15 @@
-Q = int(input())
+import heapq
 
-trees = []
+Q = int(input())
+heap = []
 
 for _ in range(Q):
   t, h = map(int, input().split())
 
   if t == 1:
-    trees.append(h)
+    heapq.heappush(heap, h)
   else:
-    new_trees = []
-    for i in trees:
-      if i > h:
-        new_trees.append(i)
-    trees = new_trees
+    while heap and heap[0] <= h:
+      heapq.heappop(heap)
 
-  print(len(trees))
+  print(len(heap))
