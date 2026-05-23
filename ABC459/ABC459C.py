@@ -1,6 +1,8 @@
 N, Q = map(int, input().split())
 
 blocks = [0] * (N + 1)
+results = []
+offset = 0
 
 for _ in range(Q):
   query = input().split()
@@ -12,17 +14,19 @@ for _ in range(Q):
 
     all_have_block = True
     for i in range(1, N + 1):
-      if blocks[i] == 0:
+      if blocks[i] - offset == 0:
         all_have_block = False
         break
 
     if all_have_block == True:
-      for i in range(1, N + 1):
-        blocks[i] -= 1
+      offset += 1
 
   else:
     count = 0
     for i in range(1, N + 1):
-      if blocks[i] >= v:
+      if blocks[i] - offset >= v:
         count += 1
-    print(count)
+    results.append(count)
+
+for r in results:
+  print(r)
